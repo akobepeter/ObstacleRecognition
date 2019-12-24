@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index"
+    "start": "nodemon index.js"
   },
   "author": "Akobe",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "face-api.js": "^0.22.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
