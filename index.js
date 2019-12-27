@@ -2,12 +2,13 @@ const express = require('express')
 const app = express()
 const port = 3000;
 const facedection = require('./src/facedection');
-const detectFace = facedection.detectFace;
+const {detectFace, loadModels} = facedection;
 
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.get('/detectFace', (req, res)=>{
+    loadModels();
     detectFace();
     res.send("done");
 })

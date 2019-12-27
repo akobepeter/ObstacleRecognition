@@ -1,46 +1,35 @@
-const fs = require('fs');
-const MODEL_PATH = './models';
+// require('@tensorflow/tfjs-node');
+const MODEL_PATH = './src/models';
 const faceapi = require('face-api.js');
+const canvas = require('canvas');
+
+const { Canvas, Image, ImageData} = canvas
+faceapi.env.monkeyPatch({Canvas, Image, ImageData});
 
 ///Load all the models for detecting faces
-const loadModels = async ()=>{
-    await faceapi.loadSsdMobilenetv1Model(MODEL_PATH).catch((err)=>{
-        console.log(err)
-    });
-await faceapi.loadFaceLandmarkModel(MODEL_PATH).catch((err)=>{
-    //console.log(err)
-});
-await faceapi.loadFaceRecognitionModel(MODEL_PATH).catch((err)=>{
-    //console.log(err)
-});
-await faceapi.loadFaceExpressionModel(MODEL_PATH).catch((err)=>{
-    //console.log(err)
-});
+exports.loadModels = async ()=>{
+    
 }
 
 
+
 ///load image
-var image = null;
-fs.readFile('./src/images/peter1.jpg', (err, data)=>{
-    if(err){
-        // console.log(err);
-        return;
-    }
-    data = Buffer.from(data).toString('base64');
-    image = `<img src="data:image/jpeg;base64, ${data}">`;
-});
 
 
 
  exports.detectFace = async () => {
+
+    await faceapi.nets.ssdMobilenetv1.loadFromDisk(MODEL_PATH).catch((e)=>{console.log(e)});
+     var image = await canvas.loadImage('./src/images/peter1.jpg');
      try{
-        let fullFaceDetetection = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors();
+        let fullFaceDetetection = await faceapi.detectAllFaces(image);
+        console.log(fullFaceDetetection);
      }
      catch(err){
          console.log(err);
      }
     
-    console.log(fullFaceDetetection);
+    // console.log(fullFaceDetetection);
 }
 
 
