@@ -8,9 +8,11 @@ const {detectFace, loadModels, recognizeFace} = facedection;
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.get('/detectFace', async(req, res)=>{
+    let imagename = req.query.img;
     await loadModels();
-    await recognizeFace()
-    // await detectFace();
+    let fullFaceDescriptions = await detectFace(imagename);
+    await recognizeFace(fullFaceDescriptions);
+  
     res.send("done");
 });
 

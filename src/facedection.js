@@ -1,4 +1,4 @@
-//require('@tensorflow/tfjs');
+require('@tensorflow/tfjs-node');
 const MODEL_PATH = './src/models';
 const faceapi = require('face-api.js');
 const canvas = require('canvas');
@@ -21,18 +21,19 @@ exports.loadModels = async ()=>{
 
 
 
- exports.detectFace = async () => {
+ exports.detectFace = async (imagename) => {
 
-     var image = await canvas.loadImage('./src/images/peter1.jpg');
+     var image = await canvas.loadImage(`./src/images/${imagename}.jpg`);
      try{
         let fullFaceDetetection = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors();
         //console.log(fullFaceDetetection);
+        return fullFaceDetetection;
      }
      catch(err){
          console.log(err);
      }
     
-    return fullFaceDetetection;
+    
 }
 
 exports.recognizeFace = async(fullFaceDetetections)=>{
@@ -45,13 +46,18 @@ exports.recognizeFace = async(fullFaceDetetections)=>{
         for(let i = 1; i<5; i++){
             let image = await canvas.loadImage(imagepath + `${i}.jpg`);
             let faceDescriptor = await faceapi.detectSingleFace(image).withFaceLandmarks().withFaceDescriptor();
-            descriptors.push(faceDescriptor.descriptor);
+            if(!faceDescriptor) continue;
+            else descriptors.push(faceDescriptor.descriptor);
         }
 
-        return new faceapi.labeledFaceDescriptors(name,descriptors);
+        return  new faceapi.LabeledFaceDescriptors(name,descriptors);
 
     }));
-     console.log(labeledFaceDescriptors);
+
+    const maxDescriptorDistance  = 0.6;
+    const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, maxDescriptorDistance);
+    const results = fullFaceDetetections.map(fd=> faceMatcher.findBestMatch(fd.descriptor));
+    console.log(results);
 
 }
 
