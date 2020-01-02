@@ -26,7 +26,7 @@ exports.loadModels = async ()=>{
      var image = await canvas.loadImage(`./src/images/${imagename}.jpg`);
      try{
         let fullFaceDetetection = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors();
-        //console.log(fullFaceDetetection);
+       
         return fullFaceDetetection;
      }
      catch(err){
