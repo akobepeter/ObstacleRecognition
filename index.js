@@ -3,6 +3,8 @@ const app = express()
 const port = 3000;
 const facedection = require('./src/facedection');
 const {detectFace, loadModels, recognizeFace} = facedection;
+const objectdetection = require('./src/objectdetection');
+const {detectObject} = objectdetection
 
 
 app.get('/', (req, res) => res.send('Hello World!'))
@@ -15,5 +17,12 @@ app.get('/detectFace', async(req, res)=>{
   
     res.send("done");
 });
+
+app.get('/detectObject', async(req, res)=>{
+    let imagename = req.query.img;
+    let path = `src/testimages/${imagename}.jpg`;
+    await detectObject(path);
+    res.send('done');
+})
 
 app.listen(port, () => console.log(`Obtacle Detection server running at ${port}`))

@@ -10,10 +10,16 @@
   "author": "Akobe",
   "license": "ISC",
   "dependencies": {
+    "@tensorflow-models/coco-ssd": "^2.0.1",
+    "@tensorflow-models/mobilenet": "^2.0.4",
     "@tensorflow/tfjs-node": "^1.5.1",
+    "base64-img": "^1.0.4",
+    "base64-to-uint8array": "^1.0.0",
     "canvas": "^2.6.1",
     "express": "^4.17.1",
-    "face-api.js": "^0.22.0"
+    "face-api.js": "^0.22.0",
+    "image-to-base64": "^2.0.1",
+    "save": "^2.4.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
