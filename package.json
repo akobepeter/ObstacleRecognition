@@ -13,7 +13,8 @@
     "@tensorflow/tfjs-node": "^1.5.1",
     "canvas": "^2.6.1",
     "express": "^4.17.1",
-    "face-api.js": "^0.22.0"
+    "face-api.js": "^0.22.0",
+    "save": "^2.4.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
