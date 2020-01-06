@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design for Bootstrap</title>
+  <title>Obstacle Recognition Site</title>
   <!-- MDB icon -->
   <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
   <!-- Font Awesome -->
@@ -63,20 +63,20 @@
 <div class="card">
 
   <h5 class="card-header info-color white-text text-center py-4">
-      <strong>Sign up</strong>
+      <strong>Add Face</strong>
   </h5>
 
   <!--Card content-->
   <div class="card-body px-lg-5 pt-0">
 
       <!-- Form -->
-      <form class="text-center" style="color: #757575;" action="#!">
+      <form id = "addPictureForm" method = "POST" class="text-center" style="color: #757575; width: 60%; margin: 0 auto; padding-top: 5em;" action="/addPicture" enctype="multipart/form-data">
 
           <div class="form-row">
               <div class="col">
                   <!-- First name -->
                   <div class="md-form">
-                      <input type="text" id="materialRegisterFormFirstName" class="form-control">
+                      <input name = "name" type="text" id="materialRegisterFormFirstName" class="form-control" required>
                       <label for="materialRegisterFormFirstName">First name</label>
                   </div>
               </div>
@@ -85,7 +85,7 @@
 
           <!-- File -->
           <div class="md-form">
-             <input type="file" id="materialRegisterFormFile" class="form-control" aria-describedby="materialRegisterFormFileHelpBlock">
+             <input type="file" name = "file1" id="materialRegisterFormFile" class="form-control" aria-describedby="materialRegisterFormFileHelpBlock" required>
               <label for="materialRegisterFormFile"></label>
               <small id="materialRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
                   Optional - for two step authentication
@@ -93,7 +93,7 @@
           </div>
 
           <div class="md-form">
-            <input type="file" id="materialRegisterFormFile" class="form-control" aria-describedby="materialRegisterFormFileHelpBlock">
+            <input type="file" name = "file2" id="materialRegisterFormFile" class="form-control" aria-describedby="materialRegisterFormFileHelpBlock" required>
             <label for="materialRegisterFormFile"></label>
             <small id="materialRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
                 Optional - for two step authentication
@@ -101,21 +101,21 @@
         </div>
 
         <div class="md-form">
-          <input type="file" id="materialRegisterFormFile" class="form-control" aria-describedby="materialRegisterFormFileHelpBlock">
+          <input type="file" name = "file3" id="materialRegisterFormFile" class="form-control" aria-describedby="materialRegisterFormFileHelpBlock" required>
           <label for="materialRegisterFormFile"></label>
           <small id="materialRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
               Optional - for two step authentication
           </small>
       </div>
       <div class="md-form">
-        <input type="file" id="materialRegisterFormFile" class="form-control" aria-describedby="materialRegisterFormFileHelpBlock">
+        <input type="file" name = "file4" id="materialRegisterFormFile" class="form-control" aria-describedby="materialRegisterFormFileHelpBlock" required>
         <label for="materialRegisterFormFile"></label>
         <small id="materialRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
             Optional - for two step authentication
         </small>
     </div>
     <div class="md-form">
-      <input type="file" id="materialRegisterFormFile" class="form-control" aria-describedby="materialRegisterFormFileHelpBlock">
+      <input type="file" name = "file5" id="materialRegisterFormFile" class="form-control" aria-describedby="materialRegisterFormFileHelpBlock" required>
       <label for="materialRegisterFormFile"></label>
       <small id="materialRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
           Optional - for two step authentication
@@ -124,7 +124,7 @@
           
 
           <!-- Sign up button -->
-          <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
+          <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Add Face</button>
 
           <!-- Social register -->
           <p>or sign up with:</p>
