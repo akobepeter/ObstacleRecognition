@@ -3,9 +3,9 @@ const app = express()
 const port = 3000;
 const facedection = require('./src/facedection');
 const {detectFace, loadModels, recognizeFace} = facedection;
+app.use(express.static('public'));
 
-
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.send('Hello World!'));
 
 app.get('/detectFace', async(req, res)=>{
     let imagename = req.query.img;
